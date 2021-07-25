@@ -1,46 +1,46 @@
 #include "../libps.h"
 
-int	rotate_a(char **a)
+int	rotate_a(s_stack *a)
 {
 	int		i;
 	char	*temp;
 
-	if (!a || !a[0] || !a[1])
+	if (!a || !a->tab || !a->len)
 		return (0);
-	temp = a[0];
+	temp = a->tab[0];
 	i = 0;
-	while (a[i])
+	while (a->tab[i])
 	{
-		a[i] = a[i + 1];
+		a->tab[i] = a->tab[i + 1];
 		i++;
 	}
-	a[i] = temp;
-	a[i + 1] = 0;
+	a->tab[i] = temp;
+	a->tab[i + 1] = 0;
 	write(1, "ra\n", 3);
 	return (1);
 }
 
-int	rotate_b(char **b)
+int	rotate_b(s_stack *b)
 {
 	int		i;
 	char	*temp;
 
-	if (!b || !b[0] || !b[1])
+	if (!b || !b->tab || !b->len)
 		return (0);
-	temp = b[0];
+	temp = b->tab[0];
 	i = 0;
-	while (b[i])
+	while (b->tab[i])
 	{
-		b[i] = b[i + 1];
+		b->tab[i] = b->tab[i + 1];
 		i++;
 	}
-	b[i] = temp;
-	b[i + 1] = 0;
+	b->tab[i] = temp;
+	b->tab[i + 1] = 0;
 	write(1, "rb\n", 3);
 	return (1);
 }
 
-int	rotate_both(char **a, char **b)
+int	rotate_both(s_stack *a, s_stack *b)
 {
 	rotate_a(a);
 	rotate_b(b);

@@ -25,7 +25,7 @@ int	argv_errors(char **argv, int argc)
 	return (1);
 }
 
-char	**stack_a(char **argv, s_tab *stack)
+char	**stack_a(char **argv, s_stack *a)
 {
 	int		i;
 	int		j;
@@ -35,7 +35,7 @@ char	**stack_a(char **argv, s_tab *stack)
 
 	i = -1;
 	k = 0;
-	tab = malloc(sizeof(char **) * (number_arg(argv) + 1));
+	a->tab = malloc(sizeof(char **) * (number_arg(argv) + 1));
 	while (argv[++i])
 	{
 		j = -1;
@@ -43,52 +43,36 @@ char	**stack_a(char **argv, s_tab *stack)
 		{
 			while (!ft_isdigit(argv[i][j]))
 				j++;
-			tab[k] = malloc(sizeof(char *) * (len_num(argv[i] + j) + 1));
+			a->tab[k] = malloc(sizeof(char *) * (len_num(argv[i] + j) + 1));
 			c = 0;
 			if (ft_isdigit(argv[i][j]))
-				tab[k][c++] = argv[i][j];
-			tab[k++][c] = '\0';
+				a->tab[k][c++] = argv[i][j];
+			a->tab[k++][c] = '\0';
 		}
 	}
-	stack->len_a = k;
+	a->len = k;
 	tab[k] = 0;
 	return (tab);
 }
 
 int	main(int ac, char **av)
 {
-	char	**a_tab;
 	int		i;
-	s_tab	stack;
+	s_stack	a;
+	s_stack	b;
 
-	if (!argv_errors(av + 1, ac - 1))
+	if (!argv_errors(av + 1, ac - 1) || !init_ab(a, b))
 		return (write(2, "Error\n", 6));
-	stack.len_a = 0;
-	a_tab = stack_a(av + 1, &stack);
+	a.len = 0;
+	a.tab = stack_a(av + 1, &a);
 
+	swap_a(&a);
+	push_a(&a, &b);
 	i = 0;
-	while (a_tab[i])
-	{	printf("before tab[%d][%s]\n", i, a_tab[i]);
+	while (a.tab[i])
+	{	printf("after tab[%d][%s]\n", i, a.tab[i]);
 		i++;}
 
-	swap_a(a_tab);
-	i = 0;
-	while (a_tab[i])
-	{	printf("after swap tab[%d][%s]\n", i, a_tab[i]);
-		i++;}
-
-	char **tab_2;
-	tab_2 = malloc(sizeof(char *) * (2 + 1));
-	tab_2[0] = "20";
-	tab_2[1] = "21";
-	tab_2[2] = 0;
-
-	push_a(a_tab, tab_2, &stack);
-	i = 0;
-	while (a_tab[i])
-	{	printf("after tab[%d][%s]\n", i, a_tab[i]);
-		i++;}
-
-	clean_all(a_tab);
+	clean_all(a);
 	return (0);
 }

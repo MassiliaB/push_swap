@@ -1,32 +1,32 @@
 #include "../libps.h"
 
-int swap_a(char **a)
+int swap_a(s_stack *a)
 {
 	char *temp;
 
-	if (!a || !a[0] || !a[1])
+	if (!a || !a->tab)
 		return (0);
-	temp = a[0];
-	a[0] = a[1];
-	a[1] = temp;
+	temp = a->tab[0];
+	a->tab[0] = a->tab[1];
+	a->tab[1] = temp;
 	write(1, "sa\n", 3);
 	return (1);
 }
 
-int swap_b(char **b)
+int swap_b(s_stack *b)
 {
 	char *temp;
 
-	if (!b || !b[0] || !b[1])
+	if (!b || !b->tab)
 		return (0);
-	temp = b[0];
-	b[0] = b[1];
-	b[1] = temp;
+	temp = b->tab[0];
+	b->tab[0] = b->tab[1];
+	b->tab[1] = temp;
 	write(1, "sb\n", 3);
 	return (1);
 }
 
-int	swap_both(char **a, char **b)
+int	swap_both(s_stack *a, s_stack *b)
 {
 	swap_b(b);
 	swap_a(a);
