@@ -4,7 +4,7 @@ int swap_a(s_stack *a)
 {
 	char *temp;
 
-	if (!a || !a->tab)
+	if (!a || !a->tab || a->len < 2)
 		return (0);
 	temp = a->tab[0];
 	a->tab[0] = a->tab[1];
@@ -17,7 +17,7 @@ int swap_b(s_stack *b)
 {
 	char *temp;
 
-	if (!b || !b->tab)
+	if (!b || !b->tab || b->len < 2)
 		return (0);
 	temp = b->tab[0];
 	b->tab[0] = b->tab[1];

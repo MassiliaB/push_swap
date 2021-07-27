@@ -10,11 +10,12 @@ NAME = push_swap
 
 SRCS =  main_ps.c \
 		clean_all.c \
-		mains_utils.c \
+		utils.c \
 		operations/push_ab.c \
 		operations/swap_ab.c \
 		operations/rotate_ab.c \
 		operations/reverse_rotate.c \
+		algo/stack_len.c \
 
 LIBFT   = libft/
 

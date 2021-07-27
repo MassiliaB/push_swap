@@ -1,11 +1,11 @@
 #include "libps.h"
 
-void clean_all(char **a_tab)
+void	clean_all(s_stack *a)
 {
 	int	i;
 
 	i = 0;
-	while (a_tab[i])
-		free(a_tab[i++]);
-	free(a_tab);
+	while (a->tab[i])
+		free(a->tab[i++]);
+	free(a->tab);
 }

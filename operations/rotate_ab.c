@@ -5,17 +5,17 @@ int	rotate_a(s_stack *a)
 	int		i;
 	char	*temp;
 
-	if (!a || !a->tab || !a->len)
+	if (!a || !a->tab || a->len < 2)
 		return (0);
 	temp = a->tab[0];
 	i = 0;
-	while (a->tab[i])
+	while (a->tab[i] && i < a->len - 1)
 	{
 		a->tab[i] = a->tab[i + 1];
 		i++;
 	}
 	a->tab[i] = temp;
-	a->tab[i + 1] = 0;
+	a->tab[a->len] = 0;
 	write(1, "ra\n", 3);
 	return (1);
 }
@@ -25,17 +25,17 @@ int	rotate_b(s_stack *b)
 	int		i;
 	char	*temp;
 
-	if (!b || !b->tab || !b->len)
+	if (!b || !b->tab || b->len < 2)
 		return (0);
 	temp = b->tab[0];
 	i = 0;
-	while (b->tab[i])
+	while (b->tab[i] && i < b->len - 1)
 	{
 		b->tab[i] = b->tab[i + 1];
 		i++;
 	}
 	b->tab[i] = temp;
-	b->tab[i + 1] = 0;
+	b->tab[b->len] = 0;
 	write(1, "rb\n", 3);
 	return (1);
 }

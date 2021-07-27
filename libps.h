@@ -15,7 +15,7 @@ typedef struct t_stack
 	int		len;
 }				s_stack;
 
-void	clean_all(char **a_tab);
+void	clean_all(s_stack *a);
 int		is_double(char **all_s, char *str, int i);
 int		number_arg(char **arg);
 int		len_num(char *arg);
@@ -30,5 +30,8 @@ int		rotate_both(s_stack *a, s_stack *b);
 int		reverse_ra(s_stack *a);
 int		reverse_rb(s_stack *b);
 int		reverse_rboth(s_stack *b, s_stack *a);
+void	only_three(s_stack *a);
+void	only_five(s_stack *a, s_stack *b);
+void	remove_from_tab(s_stack *temp);
 
 #endif
