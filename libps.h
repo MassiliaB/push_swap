@@ -11,8 +11,9 @@
 
 typedef struct t_stack
 {
-	char	**tab;
+	int		*tab;
 	int		len;
+	int		current_len;
 }				s_stack;
 
 void	clean_all(s_stack *a);
@@ -32,6 +33,6 @@ int		reverse_rb(s_stack *b);
 int		reverse_rboth(s_stack *b, s_stack *a);
 void	only_three(s_stack *a);
 void	only_five(s_stack *a, s_stack *b);
-void	remove_from_tab(s_stack *temp);
+void	only_hundred(s_stack *a, s_stack *b);
 
 #endif

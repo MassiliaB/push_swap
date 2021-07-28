@@ -3,7 +3,7 @@
 int	reverse_ra(s_stack *a)
 {
 	int		i;
-	char	*temp;
+	int		temp;
 
 	if (!a || !a->tab || a->len < 2)
 		return (0);
@@ -23,7 +23,7 @@ int	reverse_ra(s_stack *a)
 int	reverse_rb(s_stack *b)
 {
 	int		i;
-	char	*temp;
+	int		temp;
 
 	if (!b || !b->tab || b->len < 2)
 		return (0);

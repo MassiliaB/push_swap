@@ -8,14 +8,14 @@ _MAG = \033[0;35m
 
 NAME = push_swap
 
-SRCS =  main_ps.c \
-		clean_all.c \
-		utils.c \
+SRCS =  srcs/main.c \
+		srcs/clean_all.c \
+		srcs/utils.c \
+		srcs/stack_len.c \
 		operations/push_ab.c \
 		operations/swap_ab.c \
 		operations/rotate_ab.c \
 		operations/reverse_rotate.c \
-		algo/stack_len.c \
 
 LIBFT   = libft/
 

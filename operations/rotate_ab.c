@@ -3,7 +3,7 @@
 int	rotate_a(s_stack *a)
 {
 	int		i;
-	char	*temp;
+	int		temp;
 
 	if (!a || !a->tab || a->len < 2)
 		return (0);
@@ -23,7 +23,7 @@ int	rotate_a(s_stack *a)
 int	rotate_b(s_stack *b)
 {
 	int		i;
-	char	*temp;
+	int		temp;
 
 	if (!b || !b->tab || b->len < 2)
 		return (0);
