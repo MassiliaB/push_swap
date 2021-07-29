@@ -42,20 +42,22 @@ int	push_b(s_stack *a, s_stack *b)
 		return (0);
 	i = b->len;
 //	printf("i %d\n", i);
-	while (i >= 1)
+	if (b->len != 0)
+{	while (i >= 0)
 	{
-		b->tab[i] = b->tab[i - 1];
-//		printf("B = i %d, tab i [%d]\n", i, b->tab[i]);
+		b->tab[i + 1] = b->tab[i];
+		printf("B = i %d, tab i [%d]\n", i + 1, b->tab[i + 1]);
 		i--;
 	}
+}
 	b->tab[0] = a->tab[0];
-//	printf("tab [%s], %d\n", b->tab[0], b->len);
+	printf("tab [%d], %d\n", b->tab[0], b->len);
 //	b->tab[b->len + 1] = 0;
 	b->len++;
 	remove_from_tab(a);
 	write(1, "pb\n", 3);
 /*	i = 0;
 	while (a->tab[i])
-		printf("  [%s]  \n", a->tab[i++]);*/
+		printf("  [%d]  \n", a->tab[i++]);*/
 	return (1);
 }

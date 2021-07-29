@@ -32,6 +32,7 @@ int	rotate_b(s_stack *b)
 	while (b->tab[i] && i < b->len - 1)
 	{
 		b->tab[i] = b->tab[i + 1];
+	//	printf("B = i %d, tab i [%d]\n", i, b->tab[i]);
 		i++;
 	}
 	b->tab[i] = temp;

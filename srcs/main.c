@@ -69,6 +69,9 @@ int	main(int ac, char **av)
 	b.tab = malloc(sizeof(int *) * (number_arg(av)));
 	if (!b.tab)
 		return (0);
+	i = -1;
+	while (++i < number_arg(av))
+		b.tab[i] = 0;
 /*--------------------------------------------------------*/
 	i = -1;
 	while (a.tab[++i])
@@ -88,7 +91,7 @@ int	main(int ac, char **av)
 	while (a.tab[++i] && i < a.len)
 	{
 		printf("   %d[%d]  ", i, a.tab[i]);
-		if (b.tab[i] && i < b.len)
+		if (b.tab[i])
 			printf("      %d[%d]  ", i, b.tab[i]);
 		printf("\n");
 	}
