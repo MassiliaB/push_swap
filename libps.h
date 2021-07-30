@@ -34,5 +34,6 @@ int		reverse_rboth(s_stack *b, s_stack *a);
 void	only_three(s_stack *a);
 void	only_five(s_stack *a, s_stack *b);
 void	only_hundred(s_stack *a, s_stack *b);
+void    print_stack(s_stack *a, s_stack *b);
 
 #endif

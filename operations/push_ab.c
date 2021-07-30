@@ -5,7 +5,7 @@ void	remove_from_tab(s_stack *temp)
 	int	i;
 
 	i = -1;
-	while (temp->tab[++i] && i < temp->len - 1)
+	while (temp->tab[++i] && i < temp->len)
 		temp->tab[i] = temp->tab[i + 1];
 	temp->tab[temp->len] = 0;
 	temp->len--;
@@ -15,7 +15,7 @@ int	push_a(s_stack *a, s_stack *b)
 {
 	int		i;
 
-	if (!a || !a->tab || !b || !b->tab)
+	if (!a || !a->tab || !b || !b->tab || !b->len)
 		return (0);
 	i = a->len - 1;
 //	printf("A = i %d\n", i);
@@ -31,6 +31,7 @@ int	push_a(s_stack *a, s_stack *b)
 	a->len++;
 	remove_from_tab(b);
 	write(1, "pa\n", 3);
+	print_stack(a, b);
 	return (1);
 }
 
@@ -38,26 +39,20 @@ int	push_b(s_stack *a, s_stack *b)
 {
 	int		i;
 
-	if (!b || !a || !a->tab || !b->tab)
+	if (!b || !a || !a->tab || !b->tab || !a->len)
 		return (0);
 	i = b->len;
-//	printf("i %d\n", i);
 	if (b->len != 0)
 {	while (i >= 0)
 	{
 		b->tab[i + 1] = b->tab[i];
-		printf("B = i %d, tab i [%d]\n", i + 1, b->tab[i + 1]);
 		i--;
 	}
 }
 	b->tab[0] = a->tab[0];
-	printf("tab [%d], %d\n", b->tab[0], b->len);
-//	b->tab[b->len + 1] = 0;
 	b->len++;
 	remove_from_tab(a);
 	write(1, "pb\n", 3);
-/*	i = 0;
-	while (a->tab[i])
-		printf("  [%d]  \n", a->tab[i++]);*/
+	print_stack(a, b);
 	return (1);
 }

@@ -87,16 +87,6 @@ int	main(int ac, char **av)
 		only_hundred(&a, &b);
 
 /*--------------------------------------------------------*/
-	i = -1;
-	while (a.tab[++i] && i < a.len)
-	{
-		printf("   %d[%d]  ", i, a.tab[i]);
-		if (b.tab[i])
-			printf("      %d[%d]  ", i, b.tab[i]);
-		printf("\n");
-	}
-	printf("---------- "); printf(" ----------\n");
-	printf("    a.     "); printf("    b.     \n");
 /*--------------------------------------------------------*/
 
 	clean_all(&a);

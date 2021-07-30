@@ -16,6 +16,7 @@ SRCS =  srcs/main.c \
 		operations/swap_ab.c \
 		operations/rotate_ab.c \
 		operations/reverse_rotate.c \
+		print_stack.c \
 
 LIBFT   = libft/
 
