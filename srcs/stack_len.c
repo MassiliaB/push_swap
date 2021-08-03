@@ -8,10 +8,10 @@ void	insertion_sort(s_stack *a)
 
 	i = 0;
 	j = 0;
-	while (a->tab[i])
+	while (i < a->len)
 	{
 		j = i + 1;
-		while (a->tab[j])
+		while (j < a->len)
 		{
 			if (a->tab[j] < a->tab[i])
 			{
@@ -25,25 +25,25 @@ void	insertion_sort(s_stack *a)
 	}
 }
 
-void	only_three(s_stack *a)
+void	only_three(s_stack *a, s_stack *b)
 {
 	if (a->len == 2)
 	{
 		if (a->tab[1] < a->tab[0])
-			swap_a(a);
+			swap_a(a, b);
 	}
 	else
 	{
 		if (a->tab[2] < a->tab[0] && a->tab[1] < a->tab[2])
-			rotate_a(a);
+			rotate_a(a, b);
 		if (a->tab[1] < a->tab[0])
-			swap_a(a);
+			swap_a(a, b);
 		if (a->tab[0] < a->tab[1] && a->tab[2] < a->tab[0])
-			reverse_ra(a);
+			reverse_ra(a, b);
 		if (a->tab[2] < a->tab[1] && a->tab[0] < a->tab[2])
-			swap_a(a);
+			swap_a(a, b);
 		if (a->tab[2] < a->tab[0])
-			rotate_a(a);
+			rotate_a(a, b);
 	}
 }
 
@@ -56,11 +56,11 @@ void	only_five(s_stack *a, s_stack *b)
 	i = 0;
 	while (max-- > 3)
 		push_b(a, b);
-	only_three(a);
+	only_three(a, b);
 	push_a(a, b);
 	if (a->tab[1] < a->tab[0])
 	{
-		rotate_a(a);
+		rotate_a(a, b);
 		if (a->tab[a->len - 1] < a->tab[a->len - 2])
 		{
 			only_five(a, b);
@@ -69,11 +69,11 @@ void	only_five(s_stack *a, s_stack *b)
 	}
 	push_a(a, b);
 	if (a->tab[1] < a->tab[0])
-		swap_a(a);
+		swap_a(a, b);
 }
 
 
-int	find_chunk(s_stack *a, int chunk_min, int chunk_max)
+int	find_chunk(s_stack *a, s_stack *b, int chunk_min, int chunk_max)
 {
 	int	i;
 	int	hold_first;
@@ -98,13 +98,13 @@ int	find_chunk(s_stack *a, int chunk_min, int chunk_max)
 	if (hold_first < a->len / 2)
 		while (hold_first > 0)
 		{
-			rotate_a(a);
+			rotate_a(a, b);
 			hold_first--;
 		}
 	else if (hold_second < a->len / 2)
 		while (hold_second > 0)
 		{
-			reverse_ra(a);
+			reverse_ra(a, b);
 			hold_second--;
 		}
 	if (!hold_first && !hold_second)
@@ -114,21 +114,50 @@ int	find_chunk(s_stack *a, int chunk_min, int chunk_max)
 
 void	only_hundred(s_stack *a, s_stack *b)
 {
-	int	min;
 	int max;
+	int min;
 
 	min = 0;
 	max = 19;
-	while (find_chunk(a, 0, max) || max != 99)
+	while (find_chunk(a, b, min, max) || max != 99)
 	{
 		push_b(a, b);
 		print_stack(a, b);
-		if (!find_chunk(a, min, max))
+		if (!find_chunk(a, b, min, max))
+		{
+			min += 20;
 			max += 20;
+		}
 	}
 	while (b->len)
 	{
-		push_a(a,b);
+		push_a(a, b);
+		print_stack(a, b);
+	}
+	insertion_sort(a);
+	print_stack(a, b);
+}
+
+void	only_five_hundred(s_stack *a, s_stack *b)
+{
+	int max;
+	int	min;
+
+	min = 0;
+	max = 45;
+	while (find_chunk(a, b, min, max) || max != 499)
+	{
+		push_b(a, b);
+		print_stack(a, b);
+		if (!find_chunk(a, b, min, max))
+		{
+			min += 46;
+			max += 46;
+		}
+	}
+	while (b->len)
+	{
+		push_a(a, b);
 		print_stack(a, b);
 	}
 	insertion_sort(a);

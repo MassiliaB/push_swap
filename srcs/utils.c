@@ -5,7 +5,7 @@ int	is_double(char **all_s, char *str, int i)
 	int	j;
 
 	j = 0;
-	while (all_s[j] && j < i)
+	while (j < i)
 	{
 		if (!ft_strcmp(all_s[j], str))
 			return (0);

@@ -15,10 +15,10 @@ int	argv_errors(char **argv, int argc)
 			return (0);
 		j = -1;
 		while (argv[i][++j])
-			if (argv[i][j] != ' ' && !ft_isdigit(argv[i][j]))
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' ')
 				return (0);
 		num = ft_atoi(argv[i]); // REGLER INT_MIN MAX
-		if (num > INT_MAX || num < INT_MIN)
+		if (!(num >= INT_MIN && num <= INT_MAX))
 			return (0);
 		i++;
 	}
@@ -61,10 +61,12 @@ int	main(int ac, char **av)
 	s_stack	a;
 	s_stack	b;
 
+	printf("  *av [%s]\n", av[1]);
 	if (!argv_errors(av + 1, ac - 1))
 		return (write(2, "Error\n", 6));
 	a.len = 0;
 	b.len = 0;
+	a.nbr_mooves= 0;
 	a.tab = stack_a(av + 1, &a);
 	b.tab = malloc(sizeof(int *) * (number_arg(av)));
 	if (!b.tab)
@@ -74,17 +76,20 @@ int	main(int ac, char **av)
 		b.tab[i] = 0;
 /*--------------------------------------------------------*/
 	i = -1;
-	while (a.tab[++i])
+	while (++i < a.len)
 		printf("   %d[%d]  \n", i, a.tab[i]);
 	printf("-----------\n");
 	printf("    a.     \n");
 /*--------------------------------------------------------*/
-	if (a.len <= 3)
-		only_three(&a);
-	else if (a.len <= 5)
+	if (a.len == 2 || a.len == 3)
+		only_three(&a, &b);
+	else if (a.len >= 4 && a.len <= 5)
 		only_five(&a, &b);
-	else if (a.len <= 100)
+	else if (a.len >= 6 && a.len <= 100)
 		only_hundred(&a, &b);
+	else if (a.len >= 101 && a.len <= 500)
+		only_five_hundred(&a, &b);
+	printf("numbers of mooves = %d \n", a.nbr_mooves);
 
 /*--------------------------------------------------------*/
 /*--------------------------------------------------------*/

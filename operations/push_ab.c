@@ -5,7 +5,7 @@ void	remove_from_tab(s_stack *temp)
 	int	i;
 
 	i = -1;
-	while (temp->tab[++i] && i < temp->len)
+	while (++i < temp->len)
 		temp->tab[i] = temp->tab[i + 1];
 	temp->tab[temp->len] = 0;
 	temp->len--;
@@ -43,12 +43,13 @@ int	push_b(s_stack *a, s_stack *b)
 		return (0);
 	i = b->len;
 	if (b->len != 0)
-{	while (i >= 0)
 	{
-		b->tab[i + 1] = b->tab[i];
-		i--;
+		while (i >= 0)
+		{
+			b->tab[i + 1] = b->tab[i];
+			i--;
+		}
 	}
-}
 	b->tab[0] = a->tab[0];
 	b->len++;
 	remove_from_tab(a);
