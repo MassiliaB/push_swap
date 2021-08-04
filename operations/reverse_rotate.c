@@ -28,7 +28,7 @@ int	reverse_rb(s_stack *a, s_stack *b)
 
 	if (!b || !b->tab || b->len < 2)
 		return (0);
-	i = b->len;
+	i = b->len - 1;
 	temp = b->tab[i];
 	while (i > 0)
 	{

@@ -14,10 +14,11 @@ typedef struct t_stack
 	int		*tab;
 	int		len;
 	int		nbr_mooves;
-	int		current_len;
+	int		max;
+	int		j;
 }				s_stack;
 
-void	clean_all(s_stack *a);
+void	clean_all(s_stack *a, s_stack *b);
 int		is_double(char **all_s, char *str, int i);
 int		number_arg(char **arg);
 int		len_num(char *arg);
@@ -37,5 +38,6 @@ void	only_five(s_stack *a, s_stack *b);
 void	only_hundred(s_stack *a, s_stack *b);
 void    print_stack(s_stack *a, s_stack *b);
 void	only_five_hundred(s_stack *a, s_stack *b);
+void	find_max(s_stack *b);
 
 #endif

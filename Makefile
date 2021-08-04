@@ -11,7 +11,9 @@ NAME = push_swap
 SRCS =  srcs/main.c \
 		srcs/clean_all.c \
 		srcs/utils.c \
-		srcs/stack_len.c \
+		srcs/hundred.c \
+		srcs/five_hundred.c \
+		srcs/three_to_five.c \
 		operations/push_ab.c \
 		operations/swap_ab.c \
 		operations/rotate_ab.c \
@@ -22,7 +24,7 @@ LIBFT   = libft/
 
 OBJS = $(SRCS:.c=.o)
 
-CC = clang -g -fsanitize=address
+CC = clang #-g -fsanitize=address
 
 CFLAGS = -Wall -Wextra -Werror 
 

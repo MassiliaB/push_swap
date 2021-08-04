@@ -1,5 +1,22 @@
 #include "../libps.h"
 
+void	find_max(s_stack *b)
+{
+	int	i;
+
+	i = 0;
+	b->max = b->tab[i];
+	while (i < b->len)
+	{
+		if (b->tab[i] > b->max)
+		{
+			b->max = b->tab[i];
+			b->j = i;
+		}
+		i++;
+	}
+}
+
 int	is_double(char **all_s, char *str, int i)
 {
 	int	j;
