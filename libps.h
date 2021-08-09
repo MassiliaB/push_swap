@@ -15,7 +15,7 @@ typedef struct t_stack
 	int		len;
 	int		nbr_mooves;
 	int		max;
-	int		j;
+	int		min;
 }				s_stack;
 
 void	clean_all(s_stack *a, s_stack *b);
@@ -38,6 +38,9 @@ void	only_five(s_stack *a, s_stack *b);
 void	only_hundred(s_stack *a, s_stack *b);
 void    print_stack(s_stack *a, s_stack *b);
 void	only_five_hundred(s_stack *a, s_stack *b);
-void	find_max(s_stack *b);
+void	find_max_min(s_stack *b);
+void	sort_stack(s_stack *a, s_stack *b);
+int		sort_in_chunk(s_stack *a, s_stack *b, int chunk_min, int chunk_max);
+int		is_list_sorted(s_stack *a);
 
 #endif

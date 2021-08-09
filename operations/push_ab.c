@@ -18,20 +18,17 @@ int	push_a(s_stack *a, s_stack *b)
 	if (!a || !a->tab || !b || !b->tab || !b->len)
 		return (0);
 	i = a->len - 1;
-//	printf("A = i %d\n", i);
 	while (i >= 0)
 	{
 		a->tab[i + 1] = a->tab[i];
-	//	printf("A = i %d, tab i [%d]\n", i, b->tab[i]);
 		i--;
 	}
 	a->tab[0] = b->tab[0];
-//	printf("len = %d\n", a->len);
-//	a->tab[a->len + 1] = 0;
 	a->len++;
 	remove_from_tab(b);
 	write(1, "pa\n", 3);
 	print_stack(a, b);
+	a->nbr_mooves += 1;
 	return (1);
 }
 
@@ -55,5 +52,6 @@ int	push_b(s_stack *a, s_stack *b)
 	remove_from_tab(a);
 	write(1, "pb\n", 3);
 	print_stack(a, b);
+	a->nbr_mooves += 1;
 	return (1);
 }

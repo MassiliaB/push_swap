@@ -18,6 +18,7 @@ int	reverse_ra(s_stack *a, s_stack *b)
 	a->tab[a->len] = 0;
 	write(1, "rra\n", 4);
 	print_stack(a, b);
+	a->nbr_mooves += 1;
 	return (1);
 }
 
@@ -39,6 +40,7 @@ int	reverse_rb(s_stack *a, s_stack *b)
 	b->tab[b->len] = 0;
 	write(1, "rrb\n", 4);
 	print_stack(a, b);
+	a->nbr_mooves += 1;
 	return (1);
 }
 
@@ -48,5 +50,6 @@ int	reverse_rboth(s_stack *a, s_stack *b)
 	reverse_rb(a, b);
 	write(1, "rrr\n", 4);
 	print_stack(a, b);
+	a->nbr_mooves += 1;
 	return (0);
 }

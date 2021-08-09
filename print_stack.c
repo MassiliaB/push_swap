@@ -2,19 +2,30 @@
 
 void    print_stack(s_stack *a, s_stack *b)
 {
-  int i;
+//	char *end = "";
 
-	i = -1;
+(void)a;
+(void)b;
+/*    int i = -1;
 	while (++i < b->len)
+    {
+
+		printf("\033[0;31m");
 		printf(" [%d]  ", b->tab[i]);
-	printf("\n ----------");
+		printf("\033[0m");
+    }
+    printf("\n ----------");
 	printf("    b.     \n");
 	i = -1;
 	while (++i < a->len)
-		printf(" [%d]  ",  a->tab[i]);
-	printf("\n ----------");
+	{	
+		printf("\033[0;96m");
+        printf(" [%d]  ",  a->tab[i]);
+		printf("\033[0m");
+    }
+    printf("\n ----------");
 	printf("    a.     \n");
-    a->nbr_mooves += 1;
+*/
  /*   
     int j;
     int len;
