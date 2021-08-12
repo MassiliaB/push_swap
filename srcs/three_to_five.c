@@ -41,9 +41,7 @@ void	sort_a(t_stack *a)
 
 void	only_three(t_stack *a)
 {
-	if (is_list_sorted(a))
-		;
-	else if (a->len == 2)
+	if (a->len == 2)
 	{
 		if (a->tab[1] < a->tab[0])
 			swap_a(a);
@@ -79,7 +77,8 @@ void	only_five(t_stack *a, t_stack *b)
 		sort_a(a);
 		push_b(a, b);
 	}
-	only_three(a);
+	if (!is_list_sorted(a))
+		only_three(a);
 	while (b->len)
 	{
 		push_a(a, b);

@@ -12,23 +12,6 @@
 
 #include "../libps.h"
 
-void	find_max_min(t_stack *b)
-{
-	int	i;
-
-	i = 0;
-	b->max = 0;
-	b->min = 0;
-	while (i < b->len)
-	{
-		if (b->tab[i] > b->tab[b->max])
-			b->max = i;
-		if (b->tab[i] < b->tab[b->min])
-			b->min = i;
-		i++;
-	}
-}
-
 int	is_double(long int *tab, int num, int i)
 {
 	int	j;

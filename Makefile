@@ -12,7 +12,8 @@ SRCS =  srcs/main.c \
 		srcs/errors.c \
 		srcs/clean_all.c \
 		srcs/utils.c \
-		srcs/hundred.c \
+		srcs/hundreds.c \
+		srcs/chunk_for_hundreds.c \
 		srcs/three_to_five.c \
 		operations/push_ab.c \
 		operations/swap_ab.c \

@@ -20,9 +20,6 @@ long int	*stack_a(char **argv, t_stack *a)
 
 	i = -1;
 	k = 0;
-	a->tab = malloc(sizeof(int *) * (number_arg(argv)) + 1);
-	if (!a->tab)
-		return (0);
 	while (argv[++i] && i < number_arg(argv))
 	{
 		j = 0;
@@ -49,13 +46,12 @@ int	id_check(char **argv, t_stack *a, t_stack *b, t_chunk *chunk)
 		return (0);
 	a->len = 0;
 	b->len = 0;
-	b->max = 0;
-	b->min = 0;
-	a->max = 0;
-	a->min = 0;
 	chunk->min = 0;
 	chunk->max = 0;
 	a->nbr_mooves = 0;
+	a->tab = malloc(sizeof(int *) * (number_arg(argv + 1)) + 1);
+	if (!a->tab)
+		return (0);
 	a->tab = stack_a(argv + 1, a);
 	b->tab = malloc(sizeof(int *) * (number_arg(argv)));
 	if (!b->tab)
