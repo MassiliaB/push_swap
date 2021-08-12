@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   swap_ab.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula </var/mail/masboula>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 17:31:01 by masboula          #+#    #+#             */
+/*   Updated: 2021/08/12 17:31:50 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libps.h"
 
-int swap_a(s_stack *a)
+int	swap_a(s_stack *a)
 {
 	int	temp;
 
@@ -15,7 +27,7 @@ int swap_a(s_stack *a)
 	return (1);
 }
 
-int swap_b(s_stack *a, s_stack *b)
+int	swap_b(s_stack *a, s_stack *b)
 {
 	int	temp;
 
