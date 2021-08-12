@@ -86,4 +86,3 @@ void	only_five_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 	}
 }
 
-//	printf("len = %d, chunk min %d, chunk max %ld\n", a->len, chunk->min, chunk->max);

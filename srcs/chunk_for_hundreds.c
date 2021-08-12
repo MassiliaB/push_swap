@@ -52,16 +52,14 @@ int	min_in_chunk(int to_hold, t_stack *a, t_chunk *chunk)
 	{
 		i = -1;
 		while (++i < a->len)
-			if (i < a->len && (a->tab[i] >= chunk->min
-					&& a->tab[i] <= chunk->max))
+			if (i < a->len && (a->tab[i] <= chunk->max))
 				return (i);
 	}
 	else
 	{
 		i = a->len + 1;
 		while (--i >= 0)
-			if (i < a->len && i >= 0 && (a->tab[i] >= chunk->min
-					&& a->tab[i] <= chunk->max))
+			if (i < a->len && i >= 0 && (a->tab[i] <= chunk->max))
 				return (i);
 	}
 	return (-1);

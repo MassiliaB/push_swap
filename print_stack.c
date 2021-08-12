@@ -6,7 +6,7 @@ void    print_stack(t_stack *a)
 
 (void)a;
 (void)a->b;
-/*  int i = -1;
+ /* int i = -1;
 	while (++i < a->b->len)
     {
 
