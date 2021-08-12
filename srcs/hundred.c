@@ -9,11 +9,13 @@ void	sort_stack(t_stack *a, t_stack *b)
 	{
 		i = b->max;
 		if (b->max < b->len / 2)
+		{
 			while (i > 0)
 			{
 				rotate_b(a, b);
 				i--;
 			}
+		}
 		else
 		{
 			while (i < b->len)
@@ -27,26 +29,22 @@ void	sort_stack(t_stack *a, t_stack *b)
 
 int	min_in_chunk(int to_hold, t_stack *a, t_chunk *chunk)
 {
-	int i;
+	int	i;
 
-	//	printf("len = %d, chunk min %d, chunk max %ld\n", a->len, chunk->min, chunk->max);
 	if (to_hold == 1)
 	{
 		i = -1;
 		while (++i < a->len)
-		{
-	//	printf("tab %ld\n", a->tab[i]);
 			if (i < a->len && (a->tab[i] >= chunk->min && a->tab[i] <= chunk->max))
-		{//printf("tab %ld\n", a->tab[i]);
-				return (i);}}
+				return (i);
 	}
 	else
 	{
 		i = a->len + 1;
 		while (--i >= 0)
-			if (i < a->len && i >= 0 && (a->tab[i] >= chunk->min && a->tab[i] <= chunk->max))
-		{//printf("tab %ld\n", a->tab[i]);
-				return (i);}
+			if (i < a->len && i >= 0 && (a->tab[i] >= chunk->min
+				&& a->tab[i] <= chunk->max))
+					return (i);
 	}
 	return (-1);
 }
@@ -59,11 +57,13 @@ int	sort_in_chunk(t_stack *a, t_chunk *chunk)
 	hold_first = min_in_chunk(1, a, chunk);
 	hold_sec = min_in_chunk(0, a, chunk);
 	if (hold_first <= a->len / 2)
+	{
 		while (hold_first > 0)
 		{
 			rotate_a(a);
 			hold_first--;
 		}
+	}
 	else
 		while (hold_sec > 0)
 		{
@@ -122,10 +122,9 @@ void	only_five_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 	find_max_min(a);
 	chunk->cut = a->tab[a->max] / how_much_chunk(a->len);
 	chunk->min = a->tab[a->min];
+	chunk->max = chunk->cut;
 	if (chunk->min / chunk->cut < 0)
 		chunk->max = a->tab[a->min] / 2;
-	else
-		chunk->max = chunk->cut;
 	nb_max = a->tab[a->max];
 	while (a->len && chunk->min < nb_max)
 	{
@@ -146,3 +145,5 @@ void	only_five_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 		push_a(a, b);
 	}
 }
+
+	//	printf("len = %d, chunk min %d, chunk max %ld\n", a->len, chunk->min, chunk->max);

@@ -12,7 +12,7 @@
 
 #include "../libps.h"
 
-int	reverse_ra(s_stack *a)
+int	reverse_ra(t_stack *a)
 {
 	int		i;
 	int		temp;
@@ -34,7 +34,7 @@ int	reverse_ra(s_stack *a)
 	return (1);
 }
 
-int	reverse_rb(s_stack *a, s_stack *b)
+int	reverse_rb(t_stack *a, t_stack *b)
 {
 	int		i;
 	int		temp;
@@ -56,7 +56,7 @@ int	reverse_rb(s_stack *a, s_stack *b)
 	return (1);
 }
 
-int	reverse_rboth(s_stack *a, s_stack *b)
+int	reverse_rboth(t_stack *a, t_stack *b)
 {
 	reverse_ra(a);
 	reverse_rb(a, b);

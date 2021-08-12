@@ -12,7 +12,7 @@
 
 #include "../libps.h"
 
-int	rotate_a(s_stack *a)
+int	rotate_a(t_stack *a)
 {
 	int		i;
 	int		temp;
@@ -34,7 +34,7 @@ int	rotate_a(s_stack *a)
 	return (1);
 }
 
-int	rotate_b(s_stack *a, s_stack *b)
+int	rotate_b(t_stack *a, t_stack *b)
 {
 	int		i;
 	int		temp;
@@ -56,7 +56,7 @@ int	rotate_b(s_stack *a, s_stack *b)
 	return (1);
 }
 
-int	rotate_both(s_stack *a, s_stack *b)
+int	rotate_both(t_stack *a, t_stack *b)
 {
 	rotate_a(a);
 	rotate_b(a, b);

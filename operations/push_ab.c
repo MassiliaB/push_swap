@@ -12,7 +12,7 @@
 
 #include "../libps.h"
 
-void	remove_from_tab(s_stack *temp)
+void	remove_from_tab(t_stack *temp)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ void	remove_from_tab(s_stack *temp)
 	temp->len--;
 }
 
-int	push_a(s_stack *a, s_stack *b)
+int	push_a(t_stack *a, t_stack *b)
 {
 	int		i;
 
@@ -44,7 +44,7 @@ int	push_a(s_stack *a, s_stack *b)
 	return (1);
 }
 
-int	push_b(s_stack *a, s_stack *b)
+int	push_b(t_stack *a, t_stack *b)
 {
 	int		i;
 
