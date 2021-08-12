@@ -5,17 +5,15 @@ void	sort_stack(s_stack *a, s_stack *b)
 	int	i;
 
 	find_max_min(b);
-	if (b->tab[0] != b->tab[b->min])
+	if (b->tab[0] != b->tab[b->max])
 	{
 		i = b->max;
-		if (b->max <= b->len / 2)
-		{
+		if (b->max < b->len / 2)
 			while (i > 0)
 			{
 				rotate_b(a, b);
 				i--;
 			}
-		}
 		else
 		{
 			while (i < b->len)
@@ -27,74 +25,89 @@ void	sort_stack(s_stack *a, s_stack *b)
 	}
 }
 
-int	sort_in_chunk(s_stack *a, s_stack *b, int chunk_min, int chunk_max)
+int	min_in_chunk(int to_hold, s_stack *a, s_chunk *chunk)
 {
-	int	i;
-	int	hold_first;
-	int	hold_second;
+	int i;
 
-	i = -1;
-	hold_first = 0;
-	hold_second = 0;
-	while (++i < a->len)
+	//	printf("len = %d, chunk min %d, chunk max %ld\n", a->len, chunk->min, chunk->max);
+	if (to_hold == 1)
 	{
-		if (a->tab[i] && (a->tab[i] >= chunk_min && a->tab[i] <= chunk_max))
+		i = -1;
+		while (++i < a->len)
 		{
-			hold_first = i;
-			break ;
-		}
+	//	printf("tab %ld\n", a->tab[i]);
+			if (i < a->len && (a->tab[i] >= chunk->min && a->tab[i] <= chunk->max))
+		{//printf("tab %ld\n", a->tab[i]);
+				return (i);}}
 	}
-	i = a->len + 1;
-	while (--i > 0)
+	else
 	{
-	//	printf("TAB [%d] LEN [%d]  \n", a->tab[i], i);
-		if (a->tab[i] && (a->tab[i] >= chunk_min && a->tab[i] <= chunk_max))
-		{
-			hold_second = i;
-			break ;
-		}
+		i = a->len + 1;
+		while (--i >= 0)
+			if (i < a->len && i >= 0 && (a->tab[i] >= chunk->min && a->tab[i] <= chunk->max))
+		{//printf("tab %ld\n", a->tab[i]);
+				return (i);}
 	}
-//	printf("FIRST [%d][%d] SEC [%d][%d] LEN/2 %d  \n", hold_first, a->tab[hold_first], hold_second, a->tab[hold_second], a->len /2);
+	return (-1);
+}
+
+int	sort_in_chunk(s_stack *a, s_chunk *chunk)
+{
+	int	hold_first;
+	int	hold_sec;
+
+	hold_first = min_in_chunk(1, a, chunk);
+	hold_sec = min_in_chunk(0, a, chunk);
 	if (hold_first <= a->len / 2)
 		while (hold_first > 0)
 		{
-			rotate_a(a, b);
+			rotate_a(a);
 			hold_first--;
 		}
 	else
-		while (hold_second > 0)
+		while (hold_sec > 0)
 		{
-			reverse_ra(a, b);
-			hold_second--;
+			reverse_ra(a);
+			hold_sec--;
 		}
-	if (!hold_first && !hold_second)
+	if (hold_first == -1 && hold_sec == -1)
 		return (0);
-	//printf("FIRST [%d] SEC [%d] LEN/2 %d  \n", hold_first, hold_second, a->len /2);
 	return (1);
 }
 
-
-void	only_hundred(s_stack *a, s_stack *b)
+int	how_much_chunk(int len)
 {
-	int	max;
-	int	min;
+	if (len <= 50)
+		return (3);
+	if (len <= 100)
+		return (5);
+	if (len <= 300)
+		return (7);
+	return (12);
+}
 
-	min = INT_MIN;
-	max = 19;
-	while (sort_in_chunk(a, b, min, max) || max <= 100)
+void	only_hundred(s_stack *a, s_stack *b, s_chunk *chunk)
+{
+	int	nb_max;
+
+	find_max_min(a);
+	chunk->cut = a->tab[a->max] / how_much_chunk(a->len);
+	chunk->min = a->tab[a->min];
+	chunk->max = chunk->cut;
+	nb_max = a->tab[a->max];
+	while (a->len && chunk->min <= nb_max)
 	{
-		push_b(a, b);
-		if (!sort_in_chunk(a, b, min, max))
+		if (!sort_in_chunk(a, chunk))
 		{
-			min += 20;
-			max += 20;
+			chunk->min += chunk->cut;
+			chunk->max += chunk->cut;
+		}
+		else
+		{
+			sort_stack(a, b);
+			push_b(a, b);
 		}
 	}
-	while (a->len)
-	{
-		sort_in_chunk(a, b, 0, 100);
-		push_b(a, b);
-	}	
 	while (b->len)
 	{
 		sort_stack(a, b);
@@ -102,3 +115,34 @@ void	only_hundred(s_stack *a, s_stack *b)
 	}
 }
 
+void	only_five_hundred(s_stack *a, s_stack *b, s_chunk *chunk)
+{
+	int	nb_max;
+
+	find_max_min(a);
+	chunk->cut = a->tab[a->max] / how_much_chunk(a->len);
+	chunk->min = a->tab[a->min];
+	if (chunk->min / chunk->cut < 0)
+		chunk->max = a->tab[a->min] / 2;
+	else
+		chunk->max = chunk->cut;
+	nb_max = a->tab[a->max];
+	while (a->len && chunk->min < nb_max)
+	{
+		if (!sort_in_chunk(a, chunk))
+		{
+			chunk->min += chunk->cut;
+			chunk->max += chunk->cut;
+		}
+		else
+		{
+			push_b(a, b);
+			sort_stack(a, b);
+		}
+	}
+	while (b->len)
+	{
+		sort_stack(a, b);
+		push_a(a, b);
+	}
+}

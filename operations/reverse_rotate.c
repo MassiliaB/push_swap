@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-int	reverse_ra(s_stack *a, s_stack *b)
+int	reverse_ra(s_stack *a)
 {
 	int		i;
 	int		temp;
@@ -17,8 +17,8 @@ int	reverse_ra(s_stack *a, s_stack *b)
 	a->tab[i] = temp;
 	a->tab[a->len] = 0;
 	write(1, "rra\n", 4);
-	print_stack(a, b);
 	a->nbr_mooves += 1;
+	print_stack(a);
 	return (1);
 }
 
@@ -39,17 +39,17 @@ int	reverse_rb(s_stack *a, s_stack *b)
 	b->tab[i] = temp;
 	b->tab[b->len] = 0;
 	write(1, "rrb\n", 4);
-	print_stack(a, b);
+	print_stack(a);
 	a->nbr_mooves += 1;
 	return (1);
 }
 
 int	reverse_rboth(s_stack *a, s_stack *b)
 {
-	reverse_ra(a, b);
+	reverse_ra(a);
 	reverse_rb(a, b);
 	write(1, "rrr\n", 4);
-	print_stack(a, b);
 	a->nbr_mooves += 1;
+	print_stack(a);
 	return (0);
 }

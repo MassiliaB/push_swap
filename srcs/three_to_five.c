@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-void	sort_a(s_stack *a, s_stack *b)
+void	sort_a(s_stack *a)
 {
 	int	i;
 
@@ -8,11 +8,11 @@ void	sort_a(s_stack *a, s_stack *b)
 	if (a->tab[0] != a->tab[a->min])
 	{
 		i = a->min;
-		if (i <= a->len / 2)
+		if (i < a->len / 2)
 		{
 			while (i > 0)
 			{
-				rotate_a(a, b);
+				rotate_a(a);
 				i--;
 			}
 		}
@@ -20,40 +20,40 @@ void	sort_a(s_stack *a, s_stack *b)
 		{
 			while (i < a->len)
 			{
-				reverse_ra(a, b);
+				reverse_ra(a);
 				i++;
 			}
 		}
 	}
 }
 
-void	only_three(s_stack *a, s_stack *b)
+void	only_three(s_stack *a)
 {
 	if (is_list_sorted(a))
 		;
 	else if (a->len == 2)
 	{
 		if (a->tab[1] < a->tab[0])
-			swap_a(a, b);
+			swap_a(a);
 	}
 	else
 	{
 		if (a->tab[1] < a->tab[0] && a->tab[0] < a->tab[2])
-			swap_a(a, b);
+			swap_a(a);
 		else if (a->tab[1] < a->tab[0] && a->tab[2] < a->tab[1])
 		{
-			swap_a(a, b);
-			reverse_ra(a, b);
+			swap_a(a);
+			reverse_ra(a);
 		}
 		else if (a->tab[0] < a->tab[2] && a->tab[2] < a->tab[1])
 		{
-			swap_a(a, b);
-			rotate_a(a, b);
+			swap_a(a);
+			rotate_a(a);
 		}
 		else if (a->tab[1] < a->tab[0])
-			rotate_a(a, b);
+			rotate_a(a);
 		else if (a->tab[1] > a->tab[0])
-			reverse_ra(a, b);
+			reverse_ra(a);
 	}
 }
 
@@ -64,14 +64,14 @@ void	only_five(s_stack *a, s_stack *b)
 	max = a->len;
 	while (max-- > 3)
 	{
-		sort_a(a, b);
+		sort_a(a);
 		push_b(a, b);
 	}
-	only_three(a, b);
+	only_three(a);
 	while (b->len)
 	{
 		push_a(a, b);
 		if (a->tab[0] > a->tab[1])
-			swap_a(a, b);
+			swap_a(a);
 	}
 }

@@ -27,8 +27,8 @@ int	push_a(s_stack *a, s_stack *b)
 	a->len++;
 	remove_from_tab(b);
 	write(1, "pa\n", 3);
-	print_stack(a, b);
 	a->nbr_mooves += 1;
+	print_stack(a);
 	return (1);
 }
 
@@ -51,7 +51,7 @@ int	push_b(s_stack *a, s_stack *b)
 	b->len++;
 	remove_from_tab(a);
 	write(1, "pb\n", 3);
-	print_stack(a, b);
+	print_stack(a);
 	a->nbr_mooves += 1;
 	return (1);
 }

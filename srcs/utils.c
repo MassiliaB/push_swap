@@ -17,15 +17,17 @@ void	find_max_min(s_stack *b)
 	}
 }
 
-int	is_double(char **all_s, char *str, int i)
+int	is_double(long int *tab, int num, int i)
 {
 	int	j;
 
 	j = 0;
 	while (j < i)
 	{
-		if (!ft_strcmp(all_s[j], str))
-			return (1);
+	//	printf("i [%d] j [%d]\n", i, j);
+		if (tab[j] == num)
+			{//printf("tab with[%ld] at [%d]\n", tab[j], j);
+			return (1);}
 		j++;
 	}
 	return (0);
@@ -63,6 +65,10 @@ int	len_num(char *arg)
 	i = 0;
 	while (ft_isdigit(arg[i]) || arg[i] == '+'
 		|| arg[i] == '-')
+	{
 		i++;
+		if (arg[i] == ' ')
+			return (i + 1);
+	}
 	return (i);
 }
