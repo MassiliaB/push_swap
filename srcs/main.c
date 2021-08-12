@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula </var/mail/masboula>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 18:04:35 by masboula          #+#    #+#             */
+/*   Updated: 2021/08/12 18:15:25 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libps.h"
 
 long int	*stack_a(char **argv, t_stack *a)
@@ -26,7 +38,6 @@ long int	*stack_a(char **argv, t_stack *a)
 				j++;
 		}
 	}
-	//printf("tab k[%ld] len = %d, ac = %d \n", a->tab[k],k, number_arg(argv));
 	a->len = k;
 	a->tab[k] = '\0';
 	return (a->tab);
@@ -44,7 +55,7 @@ int	id_check(char **argv, t_stack *a, t_stack *b, t_chunk *chunk)
 	a->min = 0;
 	chunk->min = 0;
 	chunk->max = 0;
-	a->nbr_mooves= 0;
+	a->nbr_mooves = 0;
 	a->tab = stack_a(argv + 1, a);
 	b->tab = malloc(sizeof(int *) * (number_arg(argv)));
 	if (!b->tab)
@@ -66,7 +77,7 @@ int	main(int ac, char **av)
 
 	if (ac == 1)
 		return (0);
-	if(!id_check(av, &a, &b, &chunk))
+	if (!id_check(av, &a, &b, &chunk))
 		return (write(2, "Error\n", 6));
 	i = -1;
 	while (++i < number_arg(av))
@@ -82,7 +93,7 @@ int	main(int ac, char **av)
 		only_hundred(&a, &b, &chunk);
 	else if (a.len >= 101 && a.len <= 500)
 		only_five_hundred(&a, &b, &chunk);
-//printf("numbers of mooves = %d \n", a.nbr_mooves);
 	clean_all(&a, &b);
 	return (0);
 }
+//printf("numbers of mooves = %d \n", a.nbr_mooves);

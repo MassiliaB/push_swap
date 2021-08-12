@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   hundred.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula </var/mail/masboula>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 18:04:24 by masboula          #+#    #+#             */
+/*   Updated: 2021/08/12 18:12:50 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libps.h"
 
 void	sort_stack(t_stack *a, t_stack *b)
@@ -35,7 +47,8 @@ int	min_in_chunk(int to_hold, t_stack *a, t_chunk *chunk)
 	{
 		i = -1;
 		while (++i < a->len)
-			if (i < a->len && (a->tab[i] >= chunk->min && a->tab[i] <= chunk->max))
+			if (i < a->len && (a->tab[i] >= chunk->min
+					&& a->tab[i] <= chunk->max))
 				return (i);
 	}
 	else
@@ -43,8 +56,8 @@ int	min_in_chunk(int to_hold, t_stack *a, t_chunk *chunk)
 		i = a->len + 1;
 		while (--i >= 0)
 			if (i < a->len && i >= 0 && (a->tab[i] >= chunk->min
-				&& a->tab[i] <= chunk->max))
-					return (i);
+					&& a->tab[i] <= chunk->max))
+				return (i);
 	}
 	return (-1);
 }
@@ -65,11 +78,13 @@ int	sort_in_chunk(t_stack *a, t_chunk *chunk)
 		}
 	}
 	else
+	{
 		while (hold_sec > 0)
 		{
 			reverse_ra(a);
 			hold_sec--;
 		}
+	}
 	if (hold_first == -1 && hold_sec == -1)
 		return (0);
 	return (1);
@@ -146,4 +161,4 @@ void	only_five_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 	}
 }
 
-	//	printf("len = %d, chunk min %d, chunk max %ld\n", a->len, chunk->min, chunk->max);
+//	printf("len = %d, chunk min %d, chunk max %ld\n", a->len, chunk->min, chunk->max);

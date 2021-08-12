@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   errors.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula </var/mail/masboula>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 18:04:16 by masboula          #+#    #+#             */
+/*   Updated: 2021/08/12 18:07:27 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libps.h"
 
 int	is_list_sorted(t_stack *a)
@@ -27,10 +39,10 @@ int	argv_errors(char **argv)
 		{
 			if (!ft_isdigit(argv[i][j]) && argv[i][j] != '-'
 				&& argv[i][j] != '+' && argv[i][j] != ' ')
-					return (0);
+				return (0);
 			if ((argv[i][j] == '-' || argv[i][j] == '+')
 				&& !ft_isdigit(argv[i][j + 1]))
-					return (0);
+				return (0);
 			j++;
 		}
 		i++;

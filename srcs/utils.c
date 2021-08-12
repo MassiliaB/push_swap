@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: masboula </var/mail/masboula>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/12 18:04:57 by masboula          #+#    #+#             */
+/*   Updated: 2021/08/12 18:06:25 by masboula         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../libps.h"
 
 void	find_max_min(t_stack *b)
@@ -24,10 +36,8 @@ int	is_double(long int *tab, int num, int i)
 	j = 0;
 	while (j < i)
 	{
-	//	printf("i [%d] j [%d]\n", i, j);
 		if (tab[j] == num)
-			{//printf("tab with[%ld] at [%d]\n", tab[j], j);
-			return (1);}
+			return (1);
 		j++;
 	}
 	return (0);
