@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-void	find_max_min(s_stack *b)
+void	find_max_min(t_stack *b)
 {
 	int	i;
 

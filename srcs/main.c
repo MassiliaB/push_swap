@@ -1,10 +1,10 @@
 #include "../libps.h"
 
-long int	*stack_a(char **argv, s_stack *a)
+long int	*stack_a(char **argv, t_stack *a)
 {
-	int		i;
-	int		j;
-	int		k;
+	int	i;
+	int	j;
+	int	k;
 
 	i = -1;
 	k = 0;
@@ -32,7 +32,7 @@ long int	*stack_a(char **argv, s_stack *a)
 	return (a->tab);
 }
 
-int	id_check(char **argv, s_stack *a, s_stack *b, s_chunk *chunk)
+int	id_check(char **argv, t_stack *a, t_stack *b, t_chunk *chunk)
 {
 	if (!argv_errors(argv + 1))
 		return (0);
@@ -60,9 +60,10 @@ int	id_check(char **argv, s_stack *a, s_stack *b, s_chunk *chunk)
 int	main(int ac, char **av)
 {
 	int		i;
-	s_stack	a;
-	s_stack	b;
-	s_chunk chunk;
+	t_stack	a;
+	t_stack	b;
+	t_chunk	chunk;
+
 	if (ac == 1)
 		return (0);
 	if(!id_check(av, &a, &b, &chunk))

@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-void	sort_a(s_stack *a)
+void	sort_a(t_stack *a)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	sort_a(s_stack *a)
 	}
 }
 
-void	only_three(s_stack *a)
+void	only_three(t_stack *a)
 {
 	if (is_list_sorted(a))
 		;
@@ -57,7 +57,7 @@ void	only_three(s_stack *a)
 	}
 }
 
-void	only_five(s_stack *a, s_stack *b)
+void	only_five(t_stack *a, t_stack *b)
 {
 	int	max;
 

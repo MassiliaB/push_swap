@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-void	clean_all(s_stack *a, s_stack *b)
+void	clean_all(t_stack *a, t_stack *b)
 {
 	free(a->tab);
 	free(b->tab);

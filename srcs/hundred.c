@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-void	sort_stack(s_stack *a, s_stack *b)
+void	sort_stack(t_stack *a, t_stack *b)
 {
 	int	i;
 
@@ -25,7 +25,7 @@ void	sort_stack(s_stack *a, s_stack *b)
 	}
 }
 
-int	min_in_chunk(int to_hold, s_stack *a, s_chunk *chunk)
+int	min_in_chunk(int to_hold, t_stack *a, t_chunk *chunk)
 {
 	int i;
 
@@ -51,7 +51,7 @@ int	min_in_chunk(int to_hold, s_stack *a, s_chunk *chunk)
 	return (-1);
 }
 
-int	sort_in_chunk(s_stack *a, s_chunk *chunk)
+int	sort_in_chunk(t_stack *a, t_chunk *chunk)
 {
 	int	hold_first;
 	int	hold_sec;
@@ -86,7 +86,7 @@ int	how_much_chunk(int len)
 	return (12);
 }
 
-void	only_hundred(s_stack *a, s_stack *b, s_chunk *chunk)
+void	only_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 {
 	int	nb_max;
 
@@ -115,7 +115,7 @@ void	only_hundred(s_stack *a, s_stack *b, s_chunk *chunk)
 	}
 }
 
-void	only_five_hundred(s_stack *a, s_stack *b, s_chunk *chunk)
+void	only_five_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 {
 	int	nb_max;
 
