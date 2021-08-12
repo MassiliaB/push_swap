@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-int swap_a(s_stack *a)
+int swap_a(t_stack *a)
 {
 	int	temp;
 
@@ -15,7 +15,7 @@ int swap_a(s_stack *a)
 	return (1);
 }
 
-int swap_b(s_stack *a, s_stack *b)
+int swap_b(t_stack *a, t_stack *b)
 {
 	int	temp;
 
@@ -30,7 +30,7 @@ int swap_b(s_stack *a, s_stack *b)
 	return (1);
 }
 
-int	swap_both(s_stack *a, s_stack *b)
+int	swap_both(t_stack *a, t_stack *b)
 {
 	swap_a(a);
 	swap_b(a, b);

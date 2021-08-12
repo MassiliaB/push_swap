@@ -1,27 +1,27 @@
 #include "libps.h"
 
-void    print_stack(s_stack *a, s_stack *b)
+void    print_stack(t_stack *a)
 {
 //	char *end = "";
 
 (void)a;
-(void)b;
-/*    int i = -1;
-	while (++i < b->len)
+(void)a->b;
+/*  int i = -1;
+	while (++i < a->b->len)
     {
 
-		printf("\033[0;31m");
-		printf(" [%d]  ", b->tab[i]);
-		printf("\033[0m");
+//		printf("\033[0;31m");
+		printf(" [%ld]  ", a->b->tab[i]);
+//	    printf("\033[0m");
     }
     printf("\n ----------");
 	printf("    b.     \n");
 	i = -1;
 	while (++i < a->len)
 	{	
-		printf("\033[0;96m");
-        printf(" [%d]  ",  a->tab[i]);
-		printf("\033[0m");
+//		printf("\033[0;96m");
+        printf(" [%ld]  ",  a->tab[i]);
+//		printf("\033[0m");
     }
     printf("\n ----------");
 	printf("    a.     \n");

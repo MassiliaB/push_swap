@@ -1,6 +1,6 @@
 #include "../libps.h"
 
-int	is_list_sorted(s_stack *a)
+int	is_list_sorted(t_stack *a)
 {
 	int	i;
 
