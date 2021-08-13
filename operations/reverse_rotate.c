@@ -27,7 +27,6 @@ int	reverse_ra(t_stack *a)
 		i--;
 	}
 	a->tab[i] = temp;
-//	a->tab[a->len] = 0;
 	write(1, "rra\n", 4);
 	a->nbr_mooves += 1;
 	return (1);
@@ -48,7 +47,6 @@ int	reverse_rb(t_stack *a, t_stack *b)
 		i--;
 	}
 	b->tab[i] = temp;
-//	b->tab[b->len] = 0;
 	write(1, "rrb\n", 4);
 	a->nbr_mooves += 1;
 	return (1);

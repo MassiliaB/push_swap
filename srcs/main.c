@@ -20,7 +20,6 @@ long int	*stack_a(char **argv, t_stack *a)
 
 	i = -1;
 	k = 0;
-//	printf("num = [%d]\n", number_arg(argv));
 	while (argv[++i] && i < number_arg(argv))
 	{
 
@@ -32,14 +31,12 @@ long int	*stack_a(char **argv, t_stack *a)
 			{
 				a->tab[k++] = ft_atoi(&argv[i][j]);
 				j += len_num(argv[i] + j);
-			//	printf("k = [%d] tab [%ld]\n", k, a->tab[k - 1]);
 			}
 			else
 				j++;
 		}
 	}
 	a->len = k;
-//	a->tab[k] = '\0';
 	return (a->tab);
 }
 
@@ -53,7 +50,6 @@ int	id_check(char **argv, t_stack *a, t_stack *b, t_chunk *chunk)
 	chunk->max = 0;
 	a->nbr_mooves = 0;
 	a->tab = malloc(sizeof(int *) * (number_arg(argv + 1)));
-	//printf("malloc [%d]\n", number_arg(argv + 1) + 1);
 	if (!a->tab)
 		return (0);
 	a->tab = stack_a(argv + 1, a);
