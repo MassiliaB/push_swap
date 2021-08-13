@@ -6,7 +6,7 @@
 /*   By: masboula </var/mail/masboula>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/12 18:04:24 by masboula          #+#    #+#             */
-/*   Updated: 2021/08/12 18:12:50 by masboula         ###   ########.fr       */
+/*   Updated: 2021/08/13 10:19:26 by masboula         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,3 @@ void	only_five_hundred(t_stack *a, t_stack *b, t_chunk *chunk)
 		push_a(a, b);
 	}
 }
-
