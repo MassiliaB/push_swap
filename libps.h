@@ -28,7 +28,6 @@ typedef struct s_stack
 	int				nbr_mooves;
 	int				max;
 	int				min;
-	struct s_stack	*b;
 }				t_stack;
 
 typedef struct s_chunk
@@ -67,6 +66,5 @@ int		how_much_chunk(int len);
 int		argv_errors(char **argv);
 int		stack_a_err(long int *tab, int len);
 int		sort_in_chunk(t_stack *a, t_chunk *chunk);
-void	print_stack(t_stack *a);
 
 #endif

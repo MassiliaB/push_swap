@@ -27,10 +27,9 @@ int	rotate_a(t_stack *a)
 		i++;
 	}
 	a->tab[i] = temp;
-	a->tab[a->len] = 0;
+//	a->tab[a->len] = 0;
 	write(1, "ra\n", 3);
 	a->nbr_mooves += 1;
-	print_stack(a);
 	return (1);
 }
 
@@ -49,10 +48,9 @@ int	rotate_b(t_stack *a, t_stack *b)
 		i++;
 	}
 	b->tab[i] = temp;
-	b->tab[b->len] = 0;
+//	b->tab[b->len] = 0;
 	write(1, "rb\n", 3);
 	a->nbr_mooves += 1;
-	print_stack(a);
 	return (1);
 }
 
@@ -62,6 +60,5 @@ int	rotate_both(t_stack *a, t_stack *b)
 	rotate_b(a, b);
 	write(1, "rr\n", 3);
 	a->nbr_mooves += 1;
-	print_stack(a);
 	return (0);
 }

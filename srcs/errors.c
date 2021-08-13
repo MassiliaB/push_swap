@@ -19,7 +19,7 @@ int	is_list_sorted(t_stack *a)
 	i = 0;
 	while (i < a->len)
 	{
-		if (a->tab[i] > a->tab[i + 1] && i < a->len - 1)
+		if (i + 1 < a->len && a->tab[i] > a->tab[i + 1])
 			return (0);
 		i++;
 	}

@@ -16,10 +16,13 @@ void	remove_from_tab(t_stack *temp)
 {
 	int	i;
 
-	i = -1;
-	while (++i < temp->len)
-		temp->tab[i] = temp->tab[i + 1];
-	temp->tab[temp->len] = 0;
+	i = 0;
+	while (i < temp->len)
+	{
+		if (i + 1 < temp->len)
+			temp->tab[i] = temp->tab[i + 1];
+		i++;
+	}
 	temp->len--;
 }
 
@@ -40,7 +43,6 @@ int	push_a(t_stack *a, t_stack *b)
 	remove_from_tab(b);
 	write(1, "pa\n", 3);
 	a->nbr_mooves += 1;
-	print_stack(a);
 	return (1);
 }
 
@@ -55,7 +57,8 @@ int	push_b(t_stack *a, t_stack *b)
 	{
 		while (i >= 0)
 		{
-			b->tab[i + 1] = b->tab[i];
+			if (i + 1 <= b->len)
+				b->tab[i + 1] = b->tab[i];
 			i--;
 		}
 	}
@@ -63,7 +66,6 @@ int	push_b(t_stack *a, t_stack *b)
 	b->len++;
 	remove_from_tab(a);
 	write(1, "pb\n", 3);
-	print_stack(a);
 	a->nbr_mooves += 1;
 	return (1);
 }
