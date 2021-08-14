@@ -13,6 +13,7 @@ You have 2 stacks, a and b :
  
  ◦ a contains a random number of either positive or negative numbers without
     any duplicates.
+
   ◦ b is empty
 
 The goal is to sort in ascending order numbers into stack a. To do this you have 11 operations at your disposal, you can either swap the first two
